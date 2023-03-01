@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t hanssia/frontend -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true hanssia/frontend npm run test
